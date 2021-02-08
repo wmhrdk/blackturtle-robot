@@ -1,0 +1,2 @@
+
+-DCATKIN_DEVEL_PREFIX=/home/wmhrdk/Dev/blackturtle-robot/devel -DCMAKE_INSTALL_PREFIX=/home/wmhrdk/Dev/blackturtle-robot/install -G Unix Makefiles
