@@ -20,6 +20,7 @@ _MOTOR_2_B = 20
 _MOTOR_3_A = 19
 _MOTOR_3_B = 26
 
+# Clip function for motor speed value
 def _clip(value, minimum, maximum):
 	if value > maximum:
 		return maximum
@@ -28,7 +29,6 @@ def _clip(value, minimum, maximum):
 	return value
 
 class Motor:
-
 	def __init__(self, EN_pin, pin_1, pin_2):
 		self._EN_pin = EN_pin
 		self._pin_1 = pin_1

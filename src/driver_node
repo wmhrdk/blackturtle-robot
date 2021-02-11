@@ -5,7 +5,7 @@ from geometry_msgs.msg import Twist
 import motor as mtr
 
 class Driver:
-	
+
 	def __init__(self):
 		rospy.init_node('driver')
 
@@ -31,6 +31,7 @@ class Driver:
 		linear_y = message.linear.y
 		angular_z = message.angular.z
 
+		# Solving proper speed for each motors
 		self._motor_1_speed = (-0.333*linear_x)+(0.575*linear_y)+(0.333*angular_z)
 		self._motor_2_speed = (-0.333*linear_x)+(-0.575*linear_y)+(0.333*angular_z)
 		self._motor_3_speed = (0.667*linear_x)+(0.0*linear_y)+(0.333*angular_z)
