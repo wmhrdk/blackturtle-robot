@@ -4,8 +4,9 @@ import rospy
 from geometry_msgs.msg import Twist
 import motor as mtr
 
+# Creatting driver class
 class Driver:
-
+	# Constructor
 	def __init__(self):
 		rospy.init_node('driver')
 
@@ -24,6 +25,7 @@ class Driver:
 
 		rospy.Subscriber('cmd_vel', Twist, self._velocity_callback)
 	
+	# Callback function
 	def _velocity_callback(self, message):
 		self._last_received = rospy.get_time()
 
@@ -43,7 +45,8 @@ class Driver:
 		motor_speed = [self._motor_1_speed, self._motor_2_speed, self._motor_3_speed]
 
 		print(motor_speed)
-
+	
+	# Run function
 	def run(self):
 		print("--> Running Driver Node")
 		rate = rospy.Rate(self._rate)
@@ -60,6 +63,7 @@ class Driver:
 				self.motor_3.move(0)
 			rate.sleep()
 
+# Main function to run
 def main():
 	driver = Driver()
 	driver.run()

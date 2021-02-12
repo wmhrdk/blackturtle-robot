@@ -2,17 +2,19 @@
 
 import RPi.GPIO as IO
 
+# Setting Raspberry Pi GPIO Pin Mode
 IO.setmode(IO.BCM)
 IO.setwarnings(False)
 
-# frequency in Hz
+# Setting frequency in Hz
 _FREQUENCY = 100
 
-# H-Bridge motor driver pins
+# Initialization of H-Bridge motor drivers pins
+# Enable Pins (PWM)
 _MOTOR_1_EN = 5
 _MOTOR_2_EN = 16
 _MOTOR_3_EN = 13
-
+# Direction Pins
 _MOTOR_1_A = 6
 _MOTOR_1_B = 12
 _MOTOR_2_A = 21
@@ -28,7 +30,9 @@ def _clip(value, minimum, maximum):
 		return minimum
 	return value
 
+# Creating motor class
 class Motor:
+	# Class constructor
 	def __init__(self, EN_pin, pin_1, pin_2):
 		self._EN_pin = EN_pin
 		self._pin_1 = pin_1
@@ -39,6 +43,7 @@ class Motor:
 		self._EN_pin = IO.PWM(self._EN_pin, _FREQUENCY)
 		self._EN_pin.start(0)
 
+	# Function to move motor, negative value means opposite direction
 	def move(self, speed):
 		duty_cycle = _clip(abs(speed), 0, 100)
 		if speed < 0:
@@ -50,6 +55,7 @@ class Motor:
 			IO.output(self._pin_1, IO.LOW)
 			IO.output(self._pin_2, IO.HIGH)
 	
+	# Destructor
 	def __del__(self):
 		print("--> Cleaning Up GPIO")
 		IO.cleanup()
