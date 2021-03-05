@@ -42,13 +42,11 @@ class Driver:
 		self._motor_2_speed = (self._motor_2_speed/self._max_speed) * 100
 		self._motor_3_speed = (self._motor_3_speed/self._max_speed) * 100
 
-		motor_speed = [self._motor_1_speed, self._motor_2_speed, self._motor_3_speed]
+		rospy.loginfo([self._motor_1_speed, self._motor_2_speed, self._motor_3_speed])
 
-		print(motor_speed)
-	
 	# Run function
 	def run(self):
-		print("--> Running Driver Node")
+		rospy.loginfo("Running /driver node")
 		rate = rospy.Rate(self._rate)
 
 		while not rospy.is_shutdown():

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>blackturtle-robot</name>
-  <version>0.0.4</version>
+  <version>0.1.0</version>
   <description>The blackturtle-robot package</description>
 
   
@@ -27,8 +27,4 @@
   <exec_depend>geometry_msgs</exec_depend>
 
 
-  <export>
-    <!-- Other tools can request additional information be placed here -->
-
-  </export>
 </package>

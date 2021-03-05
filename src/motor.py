@@ -57,9 +57,7 @@ class Motor:
 	
 	# Destructor
 	def __del__(self):
-		print("--> Cleaning Up GPIO")
 		IO.cleanup()
-		print("--> GPIO Cleaned")
 
 
 
